@@ -7,8 +7,9 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-ARG WFP_API_BASE
-ARG WFP_CHECKOUT_BASE
+# Defaults are the UAT addresses, so a build with no build arguments still points at the right API. Pass build args to override (e.g. production).
+ARG WFP_API_BASE=https://pay-api.webfrestlabs.com
+ARG WFP_CHECKOUT_BASE=https://pay.webfrestlabs.com
 ENV WFP_API_BASE=$WFP_API_BASE WFP_CHECKOUT_BASE=$WFP_CHECKOUT_BASE
 RUN npx quasar build
 
