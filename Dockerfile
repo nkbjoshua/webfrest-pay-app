@@ -15,7 +15,9 @@ RUN npx quasar build
 
 FROM node:22-alpine
 WORKDIR /app
-ENV NODE_ENV=production PORT=8080
+# server.js puts the API origin into the Content-Security-Policy (connect-src), so it needs the same address at run time.
+ARG WFP_API_BASE=https://pay-api.webfrestlabs.com
+ENV NODE_ENV=production PORT=8080 WFP_API_BASE=$WFP_API_BASE
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY server.js ./

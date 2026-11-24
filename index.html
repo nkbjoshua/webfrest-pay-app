@@ -7,18 +7,8 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script>
-    (function () {
-      try {
-        var mode = localStorage.getItem('wfp_theme') || 'auto';
-        var dark = mode === 'dark' || (mode === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-      } catch (e) {}
-    })();
-  </script>
+  <!-- Sets light/dark before first paint. An external file (not inline) so the Content-Security-Policy can forbid inline scripts. -->
+  <script src="/theme-init.js"></script>
 </head>
 <body>
   <!-- quasar:entry-point -->

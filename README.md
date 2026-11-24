@@ -14,8 +14,8 @@ The two addresses are written into the JavaScript at **build time**, so they are
 
 | Build argument | Example |
 |---|---|
-| `WFP_API_BASE` | `https://pay-api.uat.webfrestlabs.com` (the API's public address) |
-| `WFP_CHECKOUT_BASE` | `https://pay.uat.webfrestlabs.com` (this app's public address) |
+| `WFP_API_BASE` | `https://pay-api.webfrestlabs.com` (the API's public address) |
+| `WFP_CHECKOUT_BASE` | `https://pay.webfrestlabs.com` (this app's public address) |
 
 ```bash
 docker build -t webfrest-pay-app --build-arg WFP_API_BASE=https://pay-api.uat.example.com --build-arg WFP_CHECKOUT_BASE=https://pay.uat.example.com .
