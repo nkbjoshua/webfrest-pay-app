@@ -18,9 +18,13 @@ const isEmbeddableCheckout = (p) => p.startsWith('/pay/');
 const csp = (frameAncestors) => [
   "default-src 'self'",
   "script-src 'self'",
-  // Vue/Quasar set inline style attributes at runtime; inline <script> stays forbidden.
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https:",
+  // Stylesheets only from this site. Vue/Quasar apply styles through the DOM (not blocked by CSP); the only HTML-parsed
+  // inline style attributes are in the Ops email preview, so those alone are allowed (style-src-attr), never <style> blocks.
+  "style-src 'self'",
+  "style-src-elem 'self'",
+  "style-src-attr 'unsafe-inline'",
+  // The app only shows its own images and generated ones (QR codes are data: URLs). No remote image hosts.
+  "img-src 'self' data: blob:",
   "font-src 'self' data:",
   `connect-src 'self' ${apiOrigin}`,
   "frame-src 'self'",
