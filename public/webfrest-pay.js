@@ -6,7 +6,7 @@
  *   // 1) Best: create the payment on your server (POST /v1/transactions/initialize), then open it:
  *   WebfrestPay.open({ accessCode: 'abc…', onSuccess: (r) => {}, onClose: () => {} });
  *
- *   // 2) Quick: create it from the page with your PUBLIC key (amounts can be tampered with - always verify on your server):
+ *   // 2) Quick: create it on the page with your PUBLIC key (amounts can be tampered with - always verify on your server):
  *   WebfrestPay.checkout({ key: 'wf_pk_test_…', email: 'ama@example.com', amount: 15000, reference: 'order-1', onSuccess: (r) => {} });
  */
 (function (global) {
