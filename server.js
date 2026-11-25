@@ -53,6 +53,9 @@ app.use((req, res, next) => {
 app.use(
   express.static(dir, {
     index: false,
+    // No "/assets" -> "/assets/" redirect: serve-static sends that 301 with its own bare CSP (default-src 'none'),
+    // replacing ours. Folder paths fall through to the app shell below instead, with the full header set.
+    redirect: false,
     setHeaders: (res, filePath) => {
       // Vite fingerprints everything under /assets, so those can be cached for a year; anything else revalidates hourly.
       if (filePath.includes(`${path.sep}assets${path.sep}`)) res.set('Cache-Control', 'public, max-age=31536000, immutable');
