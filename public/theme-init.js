@@ -1,4 +1,3 @@
-// Applies the saved light/dark theme before the app renders (avoids a flash). Loaded from index.html as a plain script.
 (function () {
   try {
     var mode = localStorage.getItem('wfp_theme') || 'auto';
